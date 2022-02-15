@@ -28,6 +28,7 @@ export interface IBearCarouselProps {
   data: TBearSlideItemDataList;
   moveTime: number
   autoPlayTime: number
+  isEnableAutoPlay: boolean,
   // breakpoints: IPropsBreakpoints
   isGPURender: boolean
   isDebug: boolean
@@ -53,6 +54,7 @@ export interface InitData {
   sourceIndex?: number;
   inPage: number;
   isClone: boolean;
+  onClick?: () => void;
   element: React.ReactNode;
 }
 

@@ -1,51 +1,6 @@
 import {IBreakpointSetting, TSlidesPerView, IBreakpointSettingActual, IInfo, IPropsBreakpoints, IBearCarouselProps, InitData, EDirection, IAspectRatio} from './types';
 import {anyToNumber} from 'bear-jsutils/convert';
 
-/**
- * 取得螢幕尺寸對應設定尺寸
- * @param breakpointSizes
- */
-export function getMediaRangeSize(breakpointSizes: string[]): number{
-    const windowSize = typeof document !== 'undefined' ? window.innerWidth : 0;
-
-    // @ts-ignore
-    const filterArray: number[] = breakpointSizes.filter(
-        (size) => Number(size) <= windowSize
-    ) as number[];
-    filterArray.sort((a, b) => Number(b) - Number(a));
-
-    if (filterArray.length > 0) {
-        return filterArray[0];
-    }
-    return 0;
-}
-
-
-/**
- * 取得響應式設定
- * @param setting
- * @param breakpoints
- */
-export function getMediaSetting(setting: IBreakpointSetting, breakpoints: IPropsBreakpoints): IBreakpointSettingActual {
-    const selectSize = getMediaRangeSize(Object.keys(breakpoints));
-    if(selectSize > 0){
-        setting = Object.assign(setting, breakpoints[selectSize]);
-    }
-
-    // 若顯示項目大於來源項目, 則關閉Loop
-    // if (setting.slidesPerView > dataLength) {
-    //     setting.isEnableLoop = false;
-    // }
-
-    const slidesPerViewActual = setting.slidesPerView === 'auto' ? 1: anyToNumber(setting.slidesPerView , 1);
-    return {
-        ...setting,
-        slidesPerViewActual: slidesPerViewActual,
-        isEnableLoop: setting.slidesPerView === 'auto' ? false : setting.isEnableLoop,
-        slidesPerGroup: setting.slidesPerGroup > slidesPerViewActual ? slidesPerViewActual:anyToNumber(setting.slidesPerGroup, 1), // fix
-    };
-}
-
 
 /**
  * 取得響應式設定
@@ -111,24 +66,21 @@ export function getMediaInfo(props: IBearCarouselProps): {info: IInfo} {
  */
 function initDataList(sourceList: Array<any> = [], slidesPerView: TSlidesPerView = 1, slidesPerGroup = 1, isLoop= false): InitData[] {
     const formatList = [];
-    const isClone = isLoop && typeof window !== 'undefined';
     let index = 0;
     const formatSlidesPerView = slidesPerView === 'auto' ? 0: Math.ceil(slidesPerView);
     const lastPage = (sourceList.length / slidesPerGroup) - (slidesPerGroup - formatSlidesPerView);
 
-    if (isClone) {
         // 複製最後面, 放在最前面
-        const cloneStart = (sourceList.length - formatSlidesPerView);
-        for (const row of sourceList.slice(-formatSlidesPerView)) {
-            formatList[index] = {
-                actualIndex: index,
-                matchIndex: formatSlidesPerView + cloneStart + index,
-                inPage: lastPage,
-                isClone: true,
-                element: row.children,
-            };
-            index += 1;
-        }
+    const cloneStart = (sourceList.length - formatSlidesPerView);
+    for (const row of sourceList.slice(-formatSlidesPerView)) {
+        formatList[index] = {
+            actualIndex: index,
+            matchIndex: formatSlidesPerView + cloneStart + index,
+            inPage: lastPage,
+            isClone: true,
+            element: row.text,
+        };
+        index += 1;
     }
 
     let matchFirstIndex = index;
@@ -140,26 +92,24 @@ function initDataList(sourceList: Array<any> = [], slidesPerView: TSlidesPerView
             sourceIndex: sourceIndex,
             inPage: Math.ceil((pageFirstIndex + 1) / slidesPerGroup),
             isClone: false,
-            element: row.children,
+            onClick: row.onClick,
+            element: row.text,
         };
         index += 1;
         pageFirstIndex += 1;
     }
 
-    if (isClone) {
     // 複製前面的(需顯示總數) 放在最後面
-
-        for (const row of sourceList.slice(0, formatSlidesPerView)) {
-            formatList[index] = {
-                actualIndex: index,
-                matchIndex: matchFirstIndex,
-                inPage: 1,
-                isClone: true,
-                element: row.children,
-            };
-            index += 1;
-            matchFirstIndex += 1;
-        }
+    for (const row of sourceList.slice(0, formatSlidesPerView)) {
+        formatList[index] = {
+            actualIndex: index,
+            matchIndex: matchFirstIndex,
+            inPage: 1,
+            isClone: true,
+            element: row.text,
+        };
+        index += 1;
+        matchFirstIndex += 1;
     }
     return formatList;
 }

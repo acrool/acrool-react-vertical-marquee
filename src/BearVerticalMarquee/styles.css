@@ -130,8 +130,13 @@
     overflow: hidden;
 
     display: flex;
+    align-items: center;
     flex: 1 0 100%;
     -webkit-flex: 1 0 100%;
+}
+
+.bear-vertical-marquee__slide-item[data-click]{
+    cursor: pointer;
 }
 
 img.bear-vertical-marquee__slide-item__img{

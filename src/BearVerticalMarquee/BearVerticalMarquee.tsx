@@ -267,7 +267,7 @@ class BearVerticalMarquee extends React.Component<IBearCarouselProps, IState> {
             const slideItemRef = this.slideItemRefs.current[slideIndex];
             if (slideItemRef) {
                 // const movePx = -dom.clientWidth * slideIndex;
-                const movePx = -slideItemRef.offsetLeft;
+                const movePx = -slideItemRef.offsetTop;
                 return movePx;
             }
         }
@@ -309,7 +309,7 @@ class BearVerticalMarquee extends React.Component<IBearCarouselProps, IState> {
                 containerRef.style.transitionDuration = isUseAnimation
                     ? `${moveTime}ms`
                     : '0ms';
-                containerRef.style.transform = `translate(${position}px, 0px)`;
+                containerRef.style.transform = `translate(0px, ${position}px)`;
             }
 
 
@@ -382,6 +382,8 @@ class BearVerticalMarquee extends React.Component<IBearCarouselProps, IState> {
                                 data-page={row.inPage}
                                 data-source={row.sourceIndex}
                                 data-is-clone={row.isClone ? true : undefined}
+                                data-click={typeof row.onClick !== 'undefined'}
+                                onClick={row.onClick}
                             >
                                 {row.element}
 
