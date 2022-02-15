@@ -1,6 +1,6 @@
 {
   "name": "bear-vertical-marquee",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "description": "Most modern vertical marquee with hardware accelerated transitions for ReactJS",
   "keywords": [
     "react",

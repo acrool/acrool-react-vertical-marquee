@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.0.1 (2022-02-15)
+
+
+### Features
+
+* 完成設定 ([0da1a2b](https://github.com/imagine10255/bear-marquee/commit/0da1a2bfa160aaa7151291e1594962c947e325ac))
+* 新增 超出省略號, 並將 container 改為 ul, 內容為 li (SEO友好) ([cd7124d](https://github.com/imagine10255/bear-marquee/commit/cd7124d343cefc8a90d3dff2e7b40ce49482530a))
+
 ### [1.2.4](https://github.com/imagine10255/bear-marquee/compare/v1.2.3...v1.2.4) (2022-02-12)
 
 
