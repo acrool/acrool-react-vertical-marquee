@@ -64,7 +64,7 @@ class BearVerticalMarquee extends React.Component<IBearCarouselProps, IState> {
 
     // Ref
     rootRef: React.RefObject<HTMLDivElement> = React.createRef();
-    containerRef: React.RefObject<HTMLDivElement> = React.createRef();
+    containerRef: React.RefObject<HTMLUListElement> = React.createRef();
     slideItemRefs: React.RefObject<Array<HTMLDivElement>> = React.createRef();
     pageRefs: React.RefObject<Array<HTMLDivElement>> = React.createRef();
 
@@ -346,12 +346,12 @@ class BearVerticalMarquee extends React.Component<IBearCarouselProps, IState> {
             >
 
                 <div className={elClassName.content}>
-                    <div
+                    <ul
                         ref={this.containerRef}
                         className={elClassName.container}
                     >
                         {this.info.formatElement.map((row, i) => (
-                            <div
+                            <li
                                 key={`vertical-marquee_${i}`}
                                 className={elClassName.slideItem}
                                 ref={(el: any) => {
@@ -370,20 +370,19 @@ class BearVerticalMarquee extends React.Component<IBearCarouselProps, IState> {
                                 data-click={typeof row.onClick !== 'undefined'}
                                 onClick={row.onClick}
                             >
-                                {row.element}
+                                <p className={elClassName.slideItemText}>{row.element}</p>
 
                                 <div className={elClassName.testNumber}>
                                     {isDebug && row.sourceIndex}
                                     {isDebug && row.isClone && (
                                         <div className={elClassName.cloneIconGroup}>
-                                            <div className={elClassName.cloneIcon}/>
-                                            {i}
+                                            clone-{i}
                                         </div>
                                     )}
                                 </div>
-                            </div>
+                            </li>
                         ))}
-                    </div>
+                    </ul>
                 </div>
 
 
