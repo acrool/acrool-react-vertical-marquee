@@ -1,4 +1,4 @@
-import {TSlidesPerView, IInfo, IBearCarouselProps, InitData} from './types';
+import {IInfo, IBearCarouselProps, InitData} from './types';
 
 
 /**
@@ -59,15 +59,12 @@ export function getMediaInfo(props: IBearCarouselProps): {info: IInfo} {
 /**
  * 初始化資料
  * @param sourceList
- * @param slidesPerView
- * @param slidesPerGroup
- * @param isLoop
  */
-function initDataList(sourceList: Array<any> = [], slidesPerView: TSlidesPerView = 1, slidesPerGroup = 1, isLoop= false): InitData[] {
+function initDataList(sourceList: Array<any> = []): InitData[] {
     const formatList = [];
     let index = 0;
-    const formatSlidesPerView = slidesPerView === 'auto' ? 0: Math.ceil(slidesPerView);
-    const lastPage = (sourceList.length / slidesPerGroup) - (slidesPerGroup - formatSlidesPerView);
+    const formatSlidesPerView = 1;
+    const lastPage = sourceList.length;
 
         // 複製最後面, 放在最前面
     const cloneStart = (sourceList.length - formatSlidesPerView);
@@ -89,7 +86,7 @@ function initDataList(sourceList: Array<any> = [], slidesPerView: TSlidesPerView
             actualIndex: index,
             matchIndex: index,
             sourceIndex: sourceIndex,
-            inPage: Math.ceil((pageFirstIndex + 1) / slidesPerGroup),
+            inPage: pageFirstIndex + 1,
             isClone: false,
             onClick: row.onClick,
             element: row.text,

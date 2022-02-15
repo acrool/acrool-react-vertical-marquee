@@ -5,11 +5,11 @@ export interface IBearCarouselProps {
   style?: CSS.Properties
   className?: string
   data: TBearSlideItemDataList;
-  moveTime?: number
-  autoPlayTime?: number
-  isEnableAutoPlay?: boolean,
-  isGPURender?: boolean
-  isDebug?: boolean
+  moveTime: number
+  autoPlayTime: number
+  isEnableAutoPlay: boolean,
+  isGPURender: boolean
+  isDebug: boolean
 }
 
 
