@@ -14,7 +14,7 @@
     "type": "git",
     "url": "https://github.com/imagine10255/bear-marquee.git"
   },
-  "homepage": "https://marquee.bearests.com",
+  "homepage": "https://vertical-marquee.bearests.com",
   "source": "src/index.ts",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",

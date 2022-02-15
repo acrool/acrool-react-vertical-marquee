@@ -1,51 +1,18 @@
-import {ReactNode} from 'react';
 import * as CSS from 'csstype';
 
-export type TSlidesPerView = number|'auto'
-export type TSlidesPerViewActual = number
-
-
-// export interface IBearCarouselObj {
-//   goToPage: (page: number) => void;
-//   activeActualIndex: number;
-//   activePage: number;
-//   info: IInfo,
-// }
-
-
-export enum EDirection {
-  vertical= 'vertical',
-  horizontal = 'horizontal',
-}
-
-export type IRenderNavButton = (toPrev: TToPrev, toNext: TToNext) => void
 
 export interface IBearCarouselProps {
-  // setCarousel?: (carouselObj: IBearCarouselObj) => void,
-  // renderNavButton?: IRenderNavButton
   style?: CSS.Properties
   className?: string
   data: TBearSlideItemDataList;
-  moveTime: number
-  autoPlayTime: number
-  isEnableAutoPlay: boolean,
-  // breakpoints: IPropsBreakpoints
-  isGPURender: boolean
-  isDebug: boolean
+  moveTime?: number
+  autoPlayTime?: number
+  isEnableAutoPlay?: boolean,
+  isGPURender?: boolean
+  isDebug?: boolean
 }
 
-export type TBearCarouselSetting = Partial<IBearCarouselProps>;
 
-
-export interface ITouchStart {
-  pageX: number,
-  pageY: number,
-  x: number,
-  y: number,
-  movePositionX: number,
-  movePositionY: number,
-  moveDirection?: EDirection,
-}
 
 
 export interface InitData {
@@ -84,32 +51,3 @@ export interface IBearSlideItemData {
 }
 export type TBearSlideItemDataList = IBearSlideItemData[];
 
-export interface IAspectRatio {
-  widthRatio: number,
-  heightRatio: number,
-  addStaticHeight?: string,
-}
-
-export interface IBreakpointSetting {
-  slidesPerView: TSlidesPerView
-  slidesPerGroup: number
-  aspectRatio?: IAspectRatio
-  staticHeight?: string,
-  spaceBetween: number
-  isCenteredSlides: boolean
-  isEnableLoop: boolean
-  isEnablePagination: boolean
-  isEnableNavButton: boolean
-  isEnableMouseMove: boolean
-  isEnableAutoPlay: boolean
-}
-export interface IBreakpointSettingActual extends IBreakpointSetting {
-  slidesPerViewActual: TSlidesPerViewActual
-}
-
-export interface IPropsBreakpoints {
-  [key: number]: Partial<IBreakpointSetting>
-}
-
-export type TToPrev = () => void
-export type TToNext = () => void

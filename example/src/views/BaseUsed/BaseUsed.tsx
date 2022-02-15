@@ -10,7 +10,6 @@ const BaseUsed = () => {
     return (
         <MarqueeRoot>
             <BearVerticalMarquee
-                isEnableAutoPlay
                 data={[
                     {key: 1, text: '凌晨3點空襲掩護20萬大軍 俄攻烏計畫曝光 演哪齣？', onClick: () => window.open('https://tw.news.yahoo.com/%E5%87%8C%E6%99%A83%E9%BB%9E%E7%A9%BA%E8%A5%B2%E6%8E%A9%E8%AD%B720%E8%90%AC%E5%A4%A7%E8%BB%8D-%E4%BF%84%E6%94%BB%E7%83%8F%E8%A8%88%E7%95%AB%E6%9B%9D%E5%85%89-%E6%BC%94%E5%93%AA%E9%BD%A3-130538471.html')},
                     {key: 2, text: '士林夜市回來了！燈會人潮擠沙丁魚 柯文哲：滿血復活', onClick: () => window.open('https://tw.news.yahoo.com/%E5%A3%AB%E6%9E%97%E5%A4%9C%E5%B8%82%E5%9B%9E%E4%BE%86%E4%BA%86-%E7%87%88%E6%9C%83%E4%BA%BA%E6%BD%AE%E6%93%A0%E6%B2%99%E4%B8%81%E9%AD%9A-%E6%9F%AF%E6%96%87%E5%93%B2-%E6%BB%BF%E8%A1%80%E5%BE%A9%E6%B4%BB-041500139.html')},

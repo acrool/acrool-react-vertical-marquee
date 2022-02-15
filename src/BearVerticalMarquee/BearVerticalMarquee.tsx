@@ -1,7 +1,6 @@
 import * as React from 'react';
-import {calcSingleAspectRatio, getMediaInfo} from './utils';
+import {getMediaInfo} from './utils';
 import {uuid} from 'bear-jsutils/key';
-import {checkIsMobile} from 'bear-jsutils/browser';
 import log from 'bear-jsutils/log';
 import {isNotEmpty} from 'bear-jsutils/equal';
 import {IBearCarouselProps, IInfo} from './types';
@@ -16,18 +15,8 @@ const logEnable = {
     componentDidMount: true,
     componentWillUnmount: true,
     shouldComponentUpdate: true,
-    onMobileTouchStart: true,
-    onMobileTouchMove: true,
-    onMobileTouchEnd: true,
-    onWebMouseStart: true,
-    onWebMouseMove: false,
-    onWebMouseEnd: true,
-    elementMove: false,
-    elementMoveDone: false,
     checkAndAutoPlay: true,
     onTransitionend: true,
-    handleResize: true,
-    handleResizeDiff: true,
     goToActualIndex: true,
 };
 
@@ -35,15 +24,14 @@ interface IState {
     windowSize: number,
 }
 
-const slidesPerView = 1;
-const isMobile = checkIsMobile();
+// const isMobile = checkIsMobile();
 
 
 class BearVerticalMarquee extends React.Component<IBearCarouselProps, IState> {
     static defaultProps = {
         data: [],
         moveTime: 500,
-        isEnableAutoPlay: false,
+        isEnableAutoPlay: true,
         isGPURender: true,
         isDebug: false,
         autoPlayTime: 5000
@@ -345,9 +333,6 @@ class BearVerticalMarquee extends React.Component<IBearCarouselProps, IState> {
 
     render() {
         const {style, className, isDebug, isGPURender} = this.props;
-        const {windowSize} = this.state;
-
-
 
         return (
             <div

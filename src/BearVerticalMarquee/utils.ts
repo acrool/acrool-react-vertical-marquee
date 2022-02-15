@@ -1,5 +1,4 @@
-import {IBreakpointSetting, TSlidesPerView, IBreakpointSettingActual, IInfo, IPropsBreakpoints, IBearCarouselProps, InitData, EDirection, IAspectRatio} from './types';
-import {anyToNumber} from 'bear-jsutils/convert';
+import {TSlidesPerView, IInfo, IBearCarouselProps, InitData} from './types';
 
 
 /**
@@ -112,85 +111,5 @@ function initDataList(sourceList: Array<any> = [], slidesPerView: TSlidesPerView
         matchFirstIndex += 1;
     }
     return formatList;
-}
-
-
-/**
- * 計算 返回角度
- * @param dx
- * @param dy
- */
-export function getSlideAngle(dx: number, dy: number): number {
-    return Math.atan2(dy, dx) * 180 / Math.PI;
-}
-
-
-/**
- * 取得 transform x 移動參數
- * @param el
- */
-export function getTranslateParams(el: HTMLDivElement): {x: number, y: number}{
-    const values = el.style.transform.split(/\w+\(|\);?/);
-    if (!values[1] || !values[1].length) {
-        return {x: 0, y: 0};
-    }
-
-    const result = values[1].split(',');
-    return {
-        x: Number(result[0].replace('px', '')),
-        y: Number(result[1].replace('px', '')),
-    };
-}
-
-
-/**
- * 根據起點和終點的返回方向
- *
- * 不能用於鎖定, 因為不滑動的會有2的判定
- * @param startX
- * @param startY
- * @param endX
- * @param endY
- *
- * @return 1:向上, 2:向下, 3:向左, 4:向右, 0:未移動
- */
-export function getSlideDirection(startX: number, startY: number, endX: number, endY: number): EDirection|undefined{
-    const dy = startY - endY;
-    const dx = endX - startX;
-
-    //如果滑動距離太短
-    if (Math.abs(dx) < 2 && Math.abs(dy) < 2) {
-        return undefined;
-    }
-    const angle = getSlideAngle(dx, dy);
-    if (angle >= -45 && angle < 45) {
-        // 向右
-        return EDirection.horizontal;
-    } else if (angle >= 45 && angle < 135) {
-        // 向上
-        return EDirection.vertical;
-    } else if (angle >= -135 && angle < -45) {
-        // 向下
-        return EDirection.vertical;
-    } else if ((angle >= 135 && angle <= 180) || (angle >= -180 && angle < -135)) {
-        // 向左
-        return EDirection.horizontal;
-    }
-    return undefined;
-}
-
-
-/**
- * 計算等比例
- * @param aspectRatio
- * @param slidesPerView
- */
-export function calcSingleAspectRatio(aspectRatio: IAspectRatio, slidesPerView: number): string{
-    const calc = (100 * (aspectRatio.heightRatio / aspectRatio.widthRatio) / slidesPerView).toFixed(2);
-
-    if(aspectRatio.addStaticHeight){
-        return `calc(${calc}% + ${aspectRatio.addStaticHeight})`;
-    }
-    return `${calc}%`;
 }
 
