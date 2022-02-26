@@ -7,7 +7,6 @@ export interface IBearCarouselProps {
   data: TBearSlideItemDataList;
   moveTime: number
   autoPlayTime: number
-  isEnableAutoPlay: boolean,
   isGPURender: boolean
   isDebug: boolean
 }

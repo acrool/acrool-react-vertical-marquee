@@ -20,12 +20,7 @@ const logEnable = {
     goToActualIndex: true,
 };
 
-interface IState {
-    windowSize: number,
-}
-
-// const isMobile = checkIsMobile();
-
+interface IState {}
 
 class BearVerticalMarquee extends React.Component<IBearCarouselProps, IState> {
     static defaultProps = {
@@ -96,19 +91,12 @@ class BearVerticalMarquee extends React.Component<IBearCarouselProps, IState> {
             }
 
             // End of moving animation (Need to return to the position, to be fake)
-            containerRef.addEventListener('transitionend', this._onTransitionend, {passive: false});
         }
     }
 
     componentWillUnmount() {
         if(this.props.isDebug && logEnable.componentWillUnmount) log.printInText('[componentWillUnmount]');
         if (this.timer) clearTimeout(this.timer);
-
-        const containerRef = this.containerRef?.current;
-        if (containerRef) {
-            containerRef.removeEventListener('transitionend', this._onTransitionend, false);
-        }
-
 
     }
 
@@ -120,8 +108,6 @@ class BearVerticalMarquee extends React.Component<IBearCarouselProps, IState> {
      */
     shouldComponentUpdate(nextProps: IBearCarouselProps, nextState: IState) {
 
-        const {windowSize: nextWindowSize} = nextState;
-        const {windowSize} = this.state;
         const {data, ...otherParams} = this.props;
         const {data: nextData, ...nextOtherProps} = nextProps;
 
@@ -151,7 +137,7 @@ class BearVerticalMarquee extends React.Component<IBearCarouselProps, IState> {
      * Check and autoplay feature
      */
     _checkAndAutoPlay = (): void => {
-        const {autoPlayTime, isEnableAutoPlay} = this.props;
+        const {autoPlayTime} = this.props;
         if(this.props.isDebug && logEnable.checkAndAutoPlay) log.printInText(`[_checkAndAutoPlay] autoPlayTime: ${autoPlayTime}`);
 
 
@@ -160,7 +146,7 @@ class BearVerticalMarquee extends React.Component<IBearCarouselProps, IState> {
             clearTimeout(this.timer);
         }
 
-        if (isEnableAutoPlay && autoPlayTime > 0 && this.info.pageTotal > 1) {
+        if (autoPlayTime > 0 && this.info.pageTotal > 1) {
             this.timer = setTimeout(() => {
                 this.toNext();
             }, autoPlayTime);
@@ -169,44 +155,12 @@ class BearVerticalMarquee extends React.Component<IBearCarouselProps, IState> {
 
 
     /**
-     * reset page position (LoopMode)
-     *
-     * PS: If the element is isClone then return to the position where it should actually be displayed
-     */
-    _onTransitionend = (): void => {
-        if(this.props.isDebug && logEnable.onTransitionend) log.printInText('[_onTransitionend]');
-
-        const formatElement = this.info?.formatElement ? this.info.formatElement : [];
-
-        const $this = this;
-        if (formatElement.length > (this.activeActualIndex - 1) && formatElement[this.activeActualIndex].isClone) {
-            setTimeout(() => {
-                $this.goToActualIndex(formatElement[this.activeActualIndex].matchIndex, false);
-            }, 0);
-        }
-
-    };
-
-    /**
      * get next page
      */
     getNextPage = (): number => {
         return this.activePage + 1;
     };
 
-    /**
-     * Get the first item on the next page
-     */
-    getNextPageFirstIndex = (): number => {
-        return this.activeActualIndex + 1;
-    };
-
-    /**
-     * Get the maximum Index
-     */
-    getMaxIndex = (): number => {
-        return this.info.formatElement.length - 1;
-    };
 
     /**
      * Get virtual index
@@ -221,17 +175,17 @@ class BearVerticalMarquee extends React.Component<IBearCarouselProps, IState> {
      */
     toNext = (): void => {
 
-        const nextPage = this.getNextPage();
-        let index = this.activeActualIndex; // The default is to return to the original position (useful for swipe movement)
+        const formatElement = this.info?.formatElement ? this.info.formatElement : [];
 
-        if (
-            this.getNextPageFirstIndex() <= this.getMaxIndex()
-        ) {
+        if (formatElement[this.activeActualIndex].isClone) {
+            this.goToActualIndex(formatElement[this.activeActualIndex].matchIndex, false);
+            this.goToActualIndex(this.activeActualIndex);
+
+        } else {
             // 正常移動到下一頁
-            index = this.activeActualIndex + 1;
-        }
+            this.goToActualIndex(this.activeActualIndex + 1);
 
-        this.goToActualIndex(index);
+        }
     };
 
 
