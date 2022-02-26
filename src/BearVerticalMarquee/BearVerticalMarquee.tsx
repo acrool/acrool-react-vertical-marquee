@@ -82,13 +82,14 @@ class BearVerticalMarquee extends React.Component<IBearCarouselProps, IState> {
 
         const containerRef = this.containerRef?.current;
         if (containerRef) {
-            // Check and turn on automatic rotation
-            this._checkAndAutoPlay();
-
             // Move to the correct position for the first time
             if(this.info.pageTotal > 0){
                 this.goToPage(1, false);
             }
+
+
+            window.addEventListener('focus', this._onWindowFocus, false);
+            window.addEventListener('blur', this._onWindowBlur, false);
 
             // End of moving animation (Need to return to the position, to be fake)
         }
@@ -131,6 +132,26 @@ class BearVerticalMarquee extends React.Component<IBearCarouselProps, IState> {
 
         return false;
     }
+
+    /**
+     * browser focus check auto play
+     * @private
+     */
+    _onWindowFocus = (): void => {
+        this._checkAndAutoPlay();
+    };
+
+
+    /**
+     * browser blur clean auto play timer
+     * @private
+     */
+    _onWindowBlur = (): void => {
+        if (this.timer) {
+            clearTimeout(this.timer);
+        }
+    };
+
 
 
     /**
