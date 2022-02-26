@@ -40,7 +40,7 @@
 ### Install
 
 ```bash
-yarn add bear-vertical-marquee
+yarn add bear-react-vertical-marquee
 ```
 
 ### Usage

@@ -4,6 +4,6 @@ import App from './App';
 
 import './index.css';
 import 'bear-styled-grid/dist/index.css';
-import 'bear-vertical-marquee/dist/index.css';
+import 'bear-react-vertical-marquee/dist/index.css';
 
 ReactDOM.render(<App />, document.getElementById('root'));

@@ -1,5 +1,5 @@
 import React from 'react';
-import BearVerticalMarquee from 'bear-vertical-marquee';
+import BearVerticalMarquee from 'bear-react-vertical-marquee';
 import styled from 'styled-components/macro';
 
 
