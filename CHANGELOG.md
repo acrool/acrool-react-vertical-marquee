@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.2](https://github.com/imagine10255/bear-marquee/compare/v1.0.1...v1.0.2) (2022-02-26)
+
+
+### Features
+
+* modify run rule ([7e3376f](https://github.com/imagine10255/bear-marquee/commit/7e3376f25681a2c5fe7ace5e43f8ac092a4cb40f))
+* rename add react ([a16db2c](https://github.com/imagine10255/bear-marquee/commit/a16db2c2a77b9c2be4e3279d6a43da6833aa80ec))
+
 ### 1.0.1 (2022-02-15)
 
 
