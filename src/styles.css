@@ -1,0 +1,102 @@
+.bear-react-vertical-marquee__test-number{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 2;
+    font-size: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    pointer-events: none;
+    overflow: auto;
+}
+
+.bear-react-vertical-marquee__clone-icon-group{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 3;
+    display:flex;
+    flex-direction: row;
+    font-size: 12px;
+    color: #fff;
+}
+
+
+.bear-react-vertical-marquee__slide-item{
+    transition-property: transform;
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex: 1 0 100%;
+    -webkit-flex: 1 0 100%;
+
+    min-width: 0;
+}
+
+.bear-react-vertical-marquee__slide-item[data-click]{
+    cursor: pointer;
+}
+
+.bear-react-vertical-marquee__slide-item-text{
+    overflow: hidden;
+
+    /* 省略號 */
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+.bear-react-vertical-marquee__container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    visibility: hidden; /* 避免瞬間移動, 故移動完才改為顯示 */
+    height: inherit;
+    transition-timing-function: ease;
+
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+.bear-react-vertical-marquee__content{
+    position: absolute; /* 防止子層container超出顯示 */
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+
+    overflow: hidden;
+}
+
+
+.bear-react-vertical-marquee__root{
+    position: relative;
+    height: inherit;
+    min-height: 16px;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.bear-react-vertical-marquee__root[data-gpu-render=true] .bear-react-vertical-marquee__container{
+    will-change: transform;
+}
+
+
+.bear-react-vertical-marquee__root[data-debug="true"] .bear-react-vertical-marquee__test-number{
+    background-color: rgba(0, 0, 0, .5);
+}
+
