@@ -21,7 +21,7 @@ export interface InitData {
   inPage: number;
   isClone: boolean;
   onClick?: () => void;
-  element: React.ReactNode;
+  element: string;
 }
 
 export interface IInfo {

@@ -345,7 +345,7 @@ class BearVerticalMarquee extends React.Component<IBearCarouselProps, IState> {
                                 data-click={typeof row.onClick !== 'undefined'}
                                 onClick={row.onClick}
                             >
-                                <p className={elClassName.slideItemText}>{row.element}</p>
+                                <p className={elClassName.slideItemText} dangerouslySetInnerHTML={{__html: row.element}}/>
 
                                 <div className={elClassName.testNumber}>
                                     {isDebug && row.sourceIndex}
