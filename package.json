@@ -19,6 +19,7 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "browser": "./dist/bear-react-vertical-marquee.es.js",
       "import": "./dist/bear-react-vertical-marquee.es.js"
     },
     "./dist/index.css": "./dist/style.css"
@@ -38,6 +39,7 @@
     "lint:fix": "eslint ./src --fix",
     "cz": "git-cz",
     "test": "jest",
+    "test:coverage": "jest --coverage",
     "gitlog": "git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cblueby %an %Cgreen(%cr)%Creset'",
     "release": "standard-version --release-as",
     "release:major": "standard-version -r major",

@@ -2,10 +2,10 @@
 
 
 
-[![NPM](https://img.shields.io/npm/v/bear-marquee.svg?style=for-the-badge)](https://www.npmjs.com/package/bear-marquee)
-[![npm downloads](https://img.shields.io/npm/dm/bear-marquee.svg?style=for-the-badge)](https://www.npmjs.com/package/bear-marquee)
-[![npm](https://img.shields.io/npm/dt/bear-marquee.svg?style=for-the-badge)](https://www.npmjs.com/package/bear-marquee)
-[![npm](https://img.shields.io/npm/l/bear-marquee?style=for-the-badge)](https://github.com/bear-marquee/bear-marquee/blob/master/LICENSE)
+[![NPM](https://img.shields.io/npm/v/bear-react-vertical-marquee.svg?style=for-the-badge)](https://www.npmjs.com/package/bear-react-vertical-marquee)
+[![npm downloads](https://img.shields.io/npm/dm/bear-react-vertical-marquee.svg?style=for-the-badge)](https://www.npmjs.com/package/bear-react-vertical-marquee)
+[![npm](https://img.shields.io/npm/dt/bear-react-vertical-marquee.svg?style=for-the-badge)](https://www.npmjs.com/package/bear-react-vertical-marquee)
+[![npm](https://img.shields.io/npm/l/bear-react-vertical-marquee?style=for-the-badge)](https://github.com/bear-react-vertical-marquee/bear-react-vertical-marquee/blob/master/LICENSE)
 
 </div>
 
