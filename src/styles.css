@@ -47,6 +47,7 @@
 .bear-react-vertical-marquee__slide-item-text{
     overflow: hidden;
 
+
     /* 省略號 */
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -84,7 +85,7 @@
 .bear-react-vertical-marquee__root{
     position: relative;
     height: inherit;
-    min-height: 16px;
+    min-height: var(--marquee-height, 16px);
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
