@@ -1,7 +1,7 @@
 # Acrool React vertical-marquee
 
 <a href="https://acrool-react-vertical-marquee.pages.dev/" title="Acrool React vertical-marquee - Vertical Marquee">
-    <img src="https://raw.githubusercontent.com/acrool/acrool-react-vertical-marquee/main/example/public/og.webp" alt="Acrool React Vertical Marquee Logo"/>
+    <img src="https://raw.githubusercontent.com/acrool/acrool-react-vertical-marquee/main/example/public/og.png" alt="Acrool React Vertical Marquee Logo"/>
 </a>
 
 <p align="center">
