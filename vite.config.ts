@@ -15,12 +15,20 @@ export default defineConfig({
         }),
         visualizer() as Plugin,
     ],
+    css: {
+        devSourcemap: process.env.NODE_ENV === 'production',
+        modules: {
+            localsConvention: 'camelCase',
+            scopeBehaviour: 'local',
+            generateScopedName: 'acrool-react-vertical-marquee__[local]',
+        }
+    },
     build: {
         sourcemap: process.env.NODE_ENV !== 'production',
         lib: {
             entry: path.resolve(__dirname, 'src/index.ts'),
             formats: ['es'],
-            fileName: (format) => `bear-react-vertical-marquee.${format}.js`,
+            fileName: (format) => `acrool-react-vertical-marquee.${format}.js`,
         },
         cssTarget: 'chrome61',
         rollupOptions: {
