@@ -1,7 +1,7 @@
 {
   "name": "@acrool/react-vertical-marquee",
-  "version": "4.2.1",
-  "description": "icon component by react",
+  "version": "4.0.0",
+  "description": "Most modern vertical marquee with hardware accelerated transitions for ReactJS",
   "keywords": [
     "react",
     "typescript",
