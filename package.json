@@ -1,6 +1,6 @@
 {
   "name": "@acrool/react-vertical-marquee",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Most modern vertical marquee with hardware accelerated transitions for ReactJS",
   "keywords": [
     "react",
