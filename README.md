@@ -22,7 +22,7 @@
 </div>
 
 
-`^4.1.4 support react >=18.0.0 <20.0.0`
+`^4.0.0 support react >=18.0.0 <20.0.0`
 
 
 ## Features
