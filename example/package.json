@@ -7,7 +7,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "pages:dev": "wrangler pages dev --proxy 3000 -- yarn dev",
-    "pages:deploy": "NODE_VERSION=18 yarn build-storybook && wrangler pages deploy ./storybook-static --project-name=acrool-react-vertical-marquee --branch main"
+    "pages:deploy": "NODE_VERSION=20 yarn build-storybook && wrangler pages deploy ./storybook-static --project-name=acrool-react-vertical-marquee --branch main"
   },
   "resolutions": {
     "styled-components": "6.1.17"
@@ -42,6 +42,6 @@
     "typescript": "^5.2.2",
     "vite": "^6.3.4",
     "vite-plugin-svgr": "^4.2.0",
-    "wrangler": "3.26.0"
+    "wrangler": "4.14.4"
   }
 }
